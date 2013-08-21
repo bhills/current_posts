@@ -81,4 +81,22 @@ function current_posts_contents(){
     ->orderBy('created', 'DESC') //Most recent first.
     ->execute(); 
   return $query;  
+  
+}
+**
+ * Implements hook_menu().
+ */
+function current_posts_menu() {
+  $items = array();
+
+  $items['admin/config/content/current_posts'] = array(
+    'title' => 'Current posts',
+    'description' => 'Configuration for Current posts module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('current_posts_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
 }
