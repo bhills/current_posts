@@ -71,3 +71,4 @@ function current_posts_block_view($delta = '') {
   
 }
 
+/* Comment for git */
