@@ -202,3 +202,17 @@ function _current_posts_page() {
     'data' => l($node->title, 'node/' . $node->nid),
     ); 
   }
+  else {
+  //Pass data through theme function.
+  $block['content']['posts'] = array(
+    '#theme' => 'item_list__current_posts__block',
+    '#items' => $items,
+  ); 
+  //Add a link to the page for more entries.
+  $block['content']['more'] = array(
+    '#theme' => 'more_link__current_posts',
+    '#url' => 'current_posts',
+    '#title' => t('See the full list of current posts.'),
+  );
+}
+drupal_set_title('Current posts');
