@@ -189,4 +189,16 @@ function current_posts_contents($display){   //$display argument is new.
   
   return $query->execute();
 }
-
+/**
+ * Custom page callback function, declared in current_posts_menu().
+ */
+function _current_posts_page() {
+  $result = current_posts_contents('page');
+  //Array to contain items for the page to render.
+  $items = array();
+  //Iterate over the resultset and format as links.
+  foreach ($result as $node) {
+    $items[] = array(
+    'data' => l($node->title, 'node/' . $node->nid),
+    ); 
+  }
